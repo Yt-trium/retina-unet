@@ -16,7 +16,7 @@ from keras.layers import Input, concatenate, Conv2D, MaxPooling2D, UpSampling2D,
 from keras.optimizers import Adam
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler
 from keras import backend as K
-from keras.utils.visualize_util import plot
+from keras.utils.vis_utils import plot_model
 from keras.optimizers import SGD
 
 import sys
@@ -168,7 +168,7 @@ patch_width = patches_imgs_train.shape[3]
 model = get_unet(n_ch, patch_height, patch_width)  #the U-net model
 print "Check: final output of the network:"
 print model.output_shape
-plot(model, to_file='./'+name_experiment+'/'+name_experiment + '_model.png')   #check how the model looks like
+plot_model(model, to_file='./'+name_experiment+'/'+name_experiment + '_model.png')   #check how the model looks like
 json_string = model.to_json()
 open('./'+name_experiment+'/'+name_experiment +'_architecture.json', 'w').write(json_string)
 
